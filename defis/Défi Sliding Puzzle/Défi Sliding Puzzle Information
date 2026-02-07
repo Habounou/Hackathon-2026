@@ -1,0 +1,100 @@
+**Défi Sliding puzzle**
+
+Un sliding puzzle, ou un jeu de pousse-pousse en français, est un jeu où des tuiles disposées sur une grille carrée forment une image. Une case de la grille est vide ; on peut alors y glisser une tuile adjacente, ce qui mélange ou démêle l'image. La variante où les tuiles sont numérotées s'appelle un taquin.
+
+Ex:
+
+  <img height="412" alt="Exemple 1" src="https://icherya.github.io/Fifteen-Puzzle/img/300px-15-puzzle.jpg" /> <img height="300" alt="Exemple 1" src="https://m.media-amazon.com/images/I/71Ao-4queEL._AC_UF894,1000_QL80_.jpg" /> 
+
+<br>
+
+**Logiciels demandés:**
+
+* Langage de votre choix entre C#, Javascript, Python et Java
+* Framework GUI compatible avec le langage choisi
+* Pour C#, utilisez WPF, Winforms ou WinUI 3
+* Pour Javascript, utilisez HTML, CSS et SVG
+* Pour Java, utilisez JavaFX, vous pouvez utiliser un framework pour gerer vos paquets come Maven et Gradle
+* Pour Python, vous avez besoin de Numpy et Pygames
+* Vous avez le droit d'utiliser un GUI builder (SceneBuilder, PyQt, Tkinter, etc), mais j'ai besoin de pouvoir exécuter votre code sans l'installer 
+
+
+**Critère d’évaluation:**
+
+* Une bonne séparation du code pour la logique et du code pour l’affichage selon les principes de model-view-controller sera récompensé dans le pointage  
+* Les détails et l’originalité sont favorisés  
+* Calculs efficaces
+
+<br>
+
+**Si vous n'avez jamais fait de dessins / de GUI:**
+* C#:       [WinUI 3](https://learn.microsoft.com/en-us/windows/apps/winui/winui3/)
+* Javascript: [DOM](https://www.w3schools.com/js/js_htmldom.asp)
+* Java:   [JavaFx](https://openjfx.io/openjfx-docs/#introduction)
+* Python:  [Pygame display](https://www.pygame.org/docs/ref/display.html)
+
+_________________
+
+<br>
+
+**Étape 1**  
+
+La première étape consiste à créer une version numérique du jeu. Au chargement, une grille 6x6 affiche l'image dans l'ordre. Lorsqu'un joueur clique sur une tuile adjacente à une case vide, cette tuile se déplace dans la case vide, sa case d'origine devenant la nouvelle case vide.
+
+<br>
+
+_________________
+
+<br>
+
+**Étape 2**  
+
+La deuxième étape consiste à ajouter deux boutons. Le premier, un bouton de réinitialisation, permet de remettre la grille dans son état initial. Le second sera pour mélanger les pièces. Attention, le jeu doit rester résoluble.
+
+<br>
+
+_________________
+
+<br>
+
+**Étape 3**  
+
+Pour la troisième étape, votre jeu doit pouvoir reconnaître quand les pièces sont résolues. Lorsque l'on clique sur le bouton « Mélanger », deux champs de texte sont activés. Le premier est un chronomètre qui mesure le temps nécessaire pour résoudre le jeu. Le second compte le nombre de coups nécessaires : chaque fois qu'une tuile est déplacée, le compteur s'incrémente.
+
+<br>
+
+_________________
+
+<br>
+
+**Étape 4**  
+
+Ajoutez un dernier bouton. Lorsqu'on clique dessus, un algorithme résout le puzzle. Les pièces sont déplacées une par une, et le chronomètre et le compteur restent actifs jusqu'à ce que le puzzle soit résolu.
+
+<br>
+
+_________________
+
+<br>
+
+**Étape 5**   
+
+Optimisez votre algorithme de résolution pour diminuer le nombre de déplacements.
+
+Comment ça va être évalué? Vos performances seront comparées à celles des autres : le score le plus élevé est donné à l'algorithme qui le moins de mouvements pour résoudre 5 puzzles.
+
+<br>
+
+_________________
+
+<br>
+
+**BONUS**  
+
+Améliorez votre jeux  
+Exemples d'idées:
+* Améliorez le GUI
+* Ajoutez des champs pour le temps et le score à battre
+* Faites quelque chose d'amusant quand quelqu'un résout le puzzle.
+
+
