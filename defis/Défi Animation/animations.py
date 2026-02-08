@@ -87,6 +87,7 @@ while running:
                     vitesse = 5
                 elif bouton_anim3.is_over(pygame.mouse.get_pos()):
                     current_screen = "Animation 3"
+                    rotation = 0
                 mouse_clicked = False
 
     if current_screen == "Idol":
@@ -179,6 +180,34 @@ while running:
         if -rect_corps_auto_size[0] + (vitesse - 30) * cote_restraint > screen.get_width():
             vitesse = 5
 
+    elif current_screen == "Animation 3":
+        rotation += 1
+        rota_rad = np.radians(rotation % 360)
+
+        l_segment = 300 * cote_restraint
+        rayon_centre = np.sin(np.radians(45)) * l_segment
+        rayon_cotes = l_segment // 2
+        dist_x = rayon_centre
+        diff_x = rayon_centre - l_segment // 2
+        modif_centre = np.sin(rota_rad) * diff_x
+        milieu_x = screen.get_width() // 2
+        milieu_y = (screen.get_height()) // 2
+        matrice_points = [(milieu_x - dist_x, milieu_y - np.cos(rota_rad) * rayon_cotes), (milieu_x, milieu_y - np.sin(rota_rad + pi / 4) * rayon_centre - modif_centre), (milieu_x + dist_x, milieu_y - np.cos(rota_rad) * rayon_cotes),
+                          (milieu_x - dist_x, milieu_y + np.cos(rota_rad) * rayon_cotes), (milieu_x, milieu_y + np.sin(rota_rad + pi / 4) * rayon_centre + modif_centre), (milieu_x + dist_x, milieu_y + np.cos(rota_rad) * rayon_cotes),
+                          (milieu_x, milieu_y + np.sin(rota_rad - pi / 4) * rayon_centre + modif_centre), (milieu_x, milieu_y - np.sin(rota_rad - pi / 4) * rayon_centre - modif_centre)]
+
+        if not 90 <= rotation % 360 <= 270:
+            pygame.draw.polygon(screen, (255, 0, 0), [matrice_points[0], matrice_points[1], matrice_points[7], matrice_points[3]])
+            pygame.draw.polygon(screen, (0, 255, 0), [matrice_points[1], matrice_points[2], matrice_points[5], matrice_points[7]])
+        else:
+            pygame.draw.polygon(screen, (0, 0, 255), [matrice_points[0], matrice_points[6], matrice_points[4], matrice_points[3]])
+            pygame.draw.polygon(screen, (255, 255, 0), [matrice_points[6], matrice_points[2], matrice_points[5], matrice_points[4]])
+
+        if 0 <= rotation % 360 <= 180:
+            pygame.draw.polygon(screen, (255, 0, 255), [matrice_points[3], matrice_points[7], matrice_points[5], matrice_points[4]])
+
+        if 180 < rotation % 360 < 360:
+            pygame.draw.polygon(screen, (0, 255, 255), [matrice_points[0], matrice_points[6], matrice_points[2], matrice_points[1]])
 
     bouton_anim1.draw(screen)
     bouton_anim2.draw(screen)
