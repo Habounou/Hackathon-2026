@@ -184,6 +184,8 @@ while running:
         rotation += 1
         rota_rad = np.radians(rotation % 360)
 
+        pygame.draw.circle(screen, (225, 215, 255), (screen.get_width() // 2, screen.get_height() // 2), cote_restraint * 300)
+
         l_segment = 300 * cote_restraint
         rayon_centre = np.sin(np.radians(45)) * l_segment
         rayon_cotes = l_segment // 2
@@ -205,9 +207,32 @@ while running:
 
         if 0 <= rotation % 360 <= 180:
             pygame.draw.polygon(screen, (255, 0, 255), [matrice_points[3], matrice_points[7], matrice_points[5], matrice_points[4]])
-
         if 180 < rotation % 360 < 360:
             pygame.draw.polygon(screen, (0, 255, 255), [matrice_points[0], matrice_points[6], matrice_points[2], matrice_points[1]])
+
+
+        if not 90 <= rotation % 360 <= 180:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[0], matrice_points[1], int(cote_restraint * 5))
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[1], matrice_points[2], int(cote_restraint * 5))
+        if not 180 <= rotation % 360 <= 270:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[3], matrice_points[7], int(cote_restraint * 5))
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[7], matrice_points[5], int(cote_restraint * 5))
+
+        if not 0 <= rotation % 360 <= 90:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[0], matrice_points[6], int(cote_restraint * 5))
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[6], matrice_points[2], int(cote_restraint * 5))
+        if not 270 <= rotation % 360 <= 360:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[3], matrice_points[4], int(cote_restraint * 5))
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[4], matrice_points[5], int(cote_restraint * 5))
+
+        if not 90 <= rotation % 360 <= 270:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[1], matrice_points[7], int(cote_restraint * 5))
+        else:
+            pygame.draw.line(screen, (0, 0, 0), matrice_points[6], matrice_points[4], int(cote_restraint * 5))
+
+        pygame.draw.line(screen, (0, 0, 0), matrice_points[0], matrice_points[3], int(cote_restraint * 5))
+        pygame.draw.line(screen, (0, 0, 0), matrice_points[2], matrice_points[5], int(cote_restraint * 5))
+
 
     bouton_anim1.draw(screen)
     bouton_anim2.draw(screen)
